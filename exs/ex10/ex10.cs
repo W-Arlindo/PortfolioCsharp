@@ -79,12 +79,17 @@ class Pedido : NaoEncontrado
 }
 class sistem
 {
-    Pedido p = new();
-
+    //Exibir status
     public void ExibirStatus()
     {
         Console.WriteLine($"Pedido Numero: {p.Numero}");
         Console.WriteLine($"Situacao: {p.Status}");
+    }
+
+    //Criar pedido
+    public void CriarPedido(int n)
+    {
+        Pedido p = new(n);
     }
     
 }
