@@ -9,7 +9,7 @@ interface NaoEncontrado
 
 class Pedido : NaoEncontrado
 {
-    enum StatusPedido{Pendente = 1, Pago = 2, Enviado =3, Cancelado=4}
+    public enum StatusPedido{Pendente = 1, Pago = 2, Enviado =3, Cancelado=4}
 
     public int Numero{get; private set;}
     public StatusPedido Status{get; private set;}
@@ -96,6 +96,17 @@ class sistem
         this.p=p;
     }
 
+    //pagar pedido
+    public void Pagar(int i)
+    {
+        if (p.Numero == i)
+        {
+            if (p.Status == Pedido.StatusPedido.Pendente)
+            {
+                p.Pagar(i);
+            }
+        }
+    }
     //Enviar pedido
     public void Enviar(int i)
     {
