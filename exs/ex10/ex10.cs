@@ -81,6 +81,13 @@ class Pedido : NaoEncontrado
 class sistem
 {
     Pedido p;
+    bool verificar(Pedido p)
+    {
+        if(p.Status == Pedido.StatusPedido.Cancelado||p.Status== Pedido.StatusPedido.Enviado)
+        {
+            throw new ArgumentException("Nao e possivel fazer alteracao");
+        }
+    }
 
     //Exibir status
     public void ExibirStatus()
