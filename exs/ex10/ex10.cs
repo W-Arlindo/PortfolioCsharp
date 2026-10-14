@@ -9,7 +9,7 @@ interface NaoEncontrado
 
 class Pedido : NaoEncontrado
 {
-    enum StatusPedido{Pendente, Pago, Enviado, Cancelado}
+    enum StatusPedido{Pendente = 1, Pago = 2, Enviado =3, Cancelado=4}
 
     public int Numero{get; private set;}
     public StatusPedido Status{get; private set;}
@@ -19,11 +19,13 @@ class Pedido : NaoEncontrado
         Console.WriteLine("Pedido nao encontrado");
     }
 
+    //Criando pedido
     public Pedido(int n)
     {
         verificarnumero(n);
         Status=StatusPedido.Pendente;
     }
+    //verificando numero d pedido
     bool verificarnumero(int n)
     {
         if (n <= 0)
@@ -35,18 +37,21 @@ class Pedido : NaoEncontrado
             return true;
         }
     }
+
+    //altera status para pago
     public void Pagar(int n)
     {
         if (n == Numero)
         {
             Status=StatusPedido.Pago;
-            Console.WriteLine("Pedido pago com sucesso");
         }
         else
         {
             naoencontrado();
         }
     }
+
+    //altera status para enviar
     public void Enviar(int n)
     {
         if (n == Numero)
@@ -58,6 +63,8 @@ class Pedido : NaoEncontrado
             naoencontrado();
         }
     }
+
+    //altera status para cancelado
     public void Cancelar(int n)
     {
         if (n == Numero)
