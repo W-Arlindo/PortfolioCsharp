@@ -119,4 +119,16 @@ class sistem
             }
         }
     }
+
+    //cancelar pedido
+    public void Cancelar(int i)
+    {
+        if (i == p.Numero)
+        {
+            if (p.Status == Pedido.StatusPedido.Pendente)
+            {
+                p.Cancelar(i);
+            }
+        }
+    }
 }
