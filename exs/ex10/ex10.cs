@@ -107,9 +107,16 @@ class sistem
             }
         }
     }
+
     //Enviar pedido
     public void Enviar(int i)
     {
-        p.Enviar(i);
+        if (p.Numero == i)
+        {
+            if (p.Status == Pedido.StatusPedido.Pago)
+            {
+                p.Enviar(i);
+            }
+        }
     }
 }
