@@ -77,8 +77,11 @@ class Pedido : NaoEncontrado
         }
     }
 }
+
 class sistem
 {
+    Pedido p;
+
     //Exibir status
     public void ExibirStatus()
     {
@@ -90,6 +93,12 @@ class sistem
     public void CriarPedido(int n)
     {
         Pedido p = new(n);
+        this.p=p;
     }
-    
+
+    //Enviar pedido
+    public void Enviar(int i)
+    {
+        p.Enviar(i);
+    }
 }
