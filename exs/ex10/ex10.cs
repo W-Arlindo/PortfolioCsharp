@@ -2,22 +2,14 @@ using System;
 
 namespace ex10;
 
-interface NaoEncontrado
-{
-    void naoencontrado();
-}
 
-class Pedido : NaoEncontrado
+class Pedido
 {
     public enum StatusPedido{Pendente = 1, Pago = 2, Enviado =3, Cancelado=4}
 
     public int Numero{get; private set;}
     public StatusPedido Status{get; private set;}
 
-    public void naoencontrado()
-    {
-        Console.WriteLine("Pedido nao encontrado");
-    }
 
     //Criando pedido
     public Pedido(int n)
