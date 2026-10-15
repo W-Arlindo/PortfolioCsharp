@@ -22,7 +22,10 @@ class Pedido : NaoEncontrado
     //Criando pedido
     public Pedido(int n)
     {
-        verificarnumero(n);
+        if (verificarnumero(n))
+        {
+            Numero=n;
+        }
         Status=StatusPedido.Pendente;
     }
     //verificando numero d pedido
@@ -81,11 +84,12 @@ class Pedido : NaoEncontrado
 class sistem
 {
     Pedido p;
-    bool verificar(Pedido p)
+    void verificar(Pedido p)
     {
         if(p.Status == Pedido.StatusPedido.Cancelado||p.Status== Pedido.StatusPedido.Enviado)
         {
-            throw new ArgumentException("Nao e possivel fazer alteracao");
+            Console.WriteLine("Nao e possivel fazer alteracao");
+            return;
         }
     }
 
@@ -101,6 +105,8 @@ class sistem
     {
         Pedido p = new(n);
         this.p=p;
+        Console.WriteLine("===");
+        Console.WriteLine($"Numero: {this.p.Numero}\nStatus: {this.p.Status}");
     }
 
     //pagar pedido
@@ -137,5 +143,15 @@ class sistem
                 p.Cancelar(i);
             }
         }
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        sistem s = new();
+
+        s.CriarPedido(1);
+
     }
 }
