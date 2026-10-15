@@ -84,13 +84,14 @@ class sistem
     {
         Pedido p = new(n);
         this.p=p;
-        Console.WriteLine("===");
-        Console.WriteLine($"Numero: {this.p.Numero}\nStatus: {this.p.Status}");
+        Console.WriteLine("=== Pedido criado");
+        ExibirStatus();
     }
 
     //pagar pedido
     public void Pagar()
     {
+        Console.WriteLine("=== Pagar");
         if (p.Status == Pedido.StatusPedido.Pendente)
         {
             p.Pagar();
@@ -105,6 +106,7 @@ class sistem
     //Enviar pedido
     public void Enviar()
     {
+        Console("=== Enviar");
         if (p.Status == Pedido.StatusPedido.Pago)
         {
             p.Enviar();
@@ -114,10 +116,11 @@ class sistem
     //cancelar pedido
     public void Cancelar()
     {
-            if (p.Status == Pedido.StatusPedido.Pendente)
-            {
-                p.Cancelar();
-            }
+        Console.WriteLine("=== Cancelar");
+        if (p.Status == Pedido.StatusPedido.Pendente)
+        {
+            p.Cancelar();
+        }
     }
 }
 class Program
