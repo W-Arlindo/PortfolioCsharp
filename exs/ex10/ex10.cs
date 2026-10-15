@@ -20,13 +20,13 @@ class Pedido
         }
         else
         {
-            Console.WriteLine("Pedido ja existente");
+            throw new ArgumentException("Pedido nao foi criado");
         }
     }
     //verificando numero d pedido
     bool verificarnumero(int n)
     {
-        if (n <= 0)
+        if (n < 0)
         {
             return false;
         }
@@ -39,7 +39,15 @@ class Pedido
     //altera status para pago
     public void Pagar()
     {
-        Status=StatusPedido.Pago;
+        if (Status == Pedido.StatusPedido.Pendente)
+        {
+            Status = StatusPedido.Pago;
+            Console.WriteLine("Pago com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Pedido nao esta pendente");
+        }
     }
 
     //altera status para enviar
@@ -93,15 +101,9 @@ class sistem
     public void Pagar()
     {
         Console.WriteLine("=== Pagar");
-        if (p.Status == Pedido.StatusPedido.Pendente)
-        {
-            p.Pagar();
-            Console.WriteLine("Pago com sucesso");
-        }
-        else
-        {
-            Console.WriteLine("Pedido nao esta pendente");
-        }
+        
+        p.Pagar();
+        
     }
 
     //Enviar pedido
