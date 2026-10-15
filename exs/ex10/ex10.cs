@@ -110,6 +110,12 @@ class sistem
         if (p.Status == Pedido.StatusPedido.Pago)
         {
             p.Enviar();
+            Console.WriteLine("Enviado com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Nao foi possivel enviar o pedido");
+            return;
         }
     }
 
