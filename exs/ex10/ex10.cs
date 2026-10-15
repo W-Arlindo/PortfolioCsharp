@@ -75,6 +75,7 @@ class sistem
     //Exibir status
     public void ExibirStatus()
     {
+        Console.WriteLine("=== Pedido");
         Console.WriteLine($"Pedido Numero: {p.Numero}");
         Console.WriteLine($"Situacao: {p.Status}");
     }
@@ -106,7 +107,7 @@ class sistem
     //Enviar pedido
     public void Enviar()
     {
-        Console("=== Enviar");
+        Console.WriteLine("=== Enviar");
         if (p.Status == Pedido.StatusPedido.Pago)
         {
             p.Enviar();
@@ -139,8 +140,6 @@ class Program
     static void Main()
     {
         sistem s = new();
-
-        s.CriarPedido(1);
 
     }
 }
