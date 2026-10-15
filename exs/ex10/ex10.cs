@@ -2,7 +2,6 @@ using System;
 
 namespace ex10;
 
-
 class Pedido
 {
     public enum StatusPedido{Pendente = 1, Pago = 2, Enviado =3, Cancelado=4}
@@ -17,8 +16,12 @@ class Pedido
         if (verificarnumero(n))
         {
             Numero=n;
+            Status=StatusPedido.Pendente;
         }
-        Status=StatusPedido.Pendente;
+        else
+        {
+            Console.WriteLine("Pedido ja existente");
+        }
     }
     //verificando numero d pedido
     bool verificarnumero(int n)
