@@ -42,42 +42,21 @@ class Pedido : NaoEncontrado
     }
 
     //altera status para pago
-    public void Pagar(int n)
+    public void Pagar()
     {
-        if (n == Numero)
-        {
-            Status=StatusPedido.Pago;
-        }
-        else
-        {
-            naoencontrado();
-        }
+        Status=StatusPedido.Pago;
     }
 
     //altera status para enviar
-    public void Enviar(int n)
+    public void Enviar()
     {
-        if (n == Numero)
-        {
-            Status=StatusPedido.Enviado;
-        }
-        else
-        {
-            naoencontrado();
-        }
+        Status=StatusPedido.Enviado;
     }
 
     //altera status para cancelado
-    public void Cancelar(int n)
+    public void Cancelar()
     {
-        if (n == Numero)
-        {
-            Status=StatusPedido.Cancelado;
-        }
-        else
-        {
-            naoencontrado();
-        }
+        Status=StatusPedido.Cancelado;
     }
 }
 
@@ -110,39 +89,30 @@ class sistem
     }
 
     //pagar pedido
-    public void Pagar(int i)
+    public void Pagar()
     {
-        if (p.Numero == i)
+        if (p.Status == Pedido.StatusPedido.Pendente)
         {
-            if (p.Status == Pedido.StatusPedido.Pendente)
-            {
-                p.Pagar(i);
-            }
+            p.Pagar();
         }
     }
 
     //Enviar pedido
-    public void Enviar(int i)
+    public void Enviar()
     {
-        if (p.Numero == i)
+        if (p.Status == Pedido.StatusPedido.Pago)
         {
-            if (p.Status == Pedido.StatusPedido.Pago)
-            {
-                p.Enviar(i);
-            }
+            p.Enviar();
         }
     }
 
     //cancelar pedido
-    public void Cancelar(int i)
+    public void Cancelar()
     {
-        if (i == p.Numero)
-        {
             if (p.Status == Pedido.StatusPedido.Pendente)
             {
-                p.Cancelar(i);
+                p.Cancelar();
             }
-        }
     }
 }
 class Program
