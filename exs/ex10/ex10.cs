@@ -53,7 +53,16 @@ class Pedido
     //altera status para enviar
     public void Enviar()
     {
-        Status=StatusPedido.Enviado;
+        if (Status == Pedido.StatusPedido.Pago)
+        {
+            Status=StatusPedido.Enviado;
+            Console.WriteLine("Enviado com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Nao foi possivel enviar o pedido");
+            return;
+        }
     }
 
     //altera status para cancelado
@@ -110,16 +119,8 @@ class sistem
     public void Enviar()
     {
         Console.WriteLine("=== Enviar");
-        if (p.Status == Pedido.StatusPedido.Pago)
-        {
-            p.Enviar();
-            Console.WriteLine("Enviado com sucesso");
-        }
-        else
-        {
-            Console.WriteLine("Nao foi possivel enviar o pedido");
-            return;
-        }
+        
+        p.Enviar();
     }
 
     //cancelar pedido
