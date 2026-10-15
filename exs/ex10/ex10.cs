@@ -68,14 +68,22 @@ class Pedido
     //altera status para cancelado
     public void Cancelar()
     {
-        Status=StatusPedido.Cancelado;
+        if (Status == Pedido.StatusPedido.Pendente)
+        {
+            Status=StatusPedido.Cancelado;
+            Console.WriteLine("Cancelado!");
+        }
+        else
+        {
+            Console.WriteLine("Cancelamento invalido.\nPedido ja foi pago");
+        }
     }
 }
 
 class sistem
 {
     Pedido p;
-    void verificar(Pedido p)
+    /*void verificar(Pedido p)
     {
         if(p.Status == Pedido.StatusPedido.Cancelado)
         {
@@ -87,7 +95,7 @@ class sistem
             Console.WriteLine("Nao e possivel fazer alteracao, pedido ja foi enviado");
             return;
         }
-    }
+    }*/
 
     //Exibir status
     public void ExibirStatus()
@@ -127,15 +135,8 @@ class sistem
     public void Cancelar()
     {
         Console.WriteLine("=== Cancelar");
-        if (p.Status == Pedido.StatusPedido.Pendente)
-        {
-            p.Cancelar();
-            Console.WriteLine("Cancelado!");
-        }
-        else
-        {
-            Console.WriteLine("Cancelamento invalido.\nPedido ja foi pago");
-        }
+        
+        p.Cancelar();
     }
 }
 class Program
