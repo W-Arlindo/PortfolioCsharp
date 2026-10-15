@@ -60,9 +60,14 @@ class sistem
     Pedido p;
     void verificar(Pedido p)
     {
-        if(p.Status == Pedido.StatusPedido.Cancelado||p.Status== Pedido.StatusPedido.Enviado)
+        if(p.Status == Pedido.StatusPedido.Cancelado)
         {
-            Console.WriteLine("Nao e possivel fazer alteracao");
+            Console.WriteLine("Nao e possivel fazer alteracao, pedido ja foi cancelado");
+            return;
+        }
+        else if(p.Status == Pedido.StatusPedido.Enviado)
+        {
+            Console.WriteLine("Nao e possivel fazer alteracao, pedido ja foi enviado");
             return;
         }
     }
@@ -89,6 +94,11 @@ class sistem
         if (p.Status == Pedido.StatusPedido.Pendente)
         {
             p.Pagar();
+            Console.WriteLine("Pago com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Pedido nao estar pendente");
         }
     }
 
