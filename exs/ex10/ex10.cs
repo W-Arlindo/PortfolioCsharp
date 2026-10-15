@@ -99,7 +99,7 @@ class sistem
         }
         else
         {
-            Console.WriteLine("Pedido nao estar pendente");
+            Console.WriteLine("Pedido nao esta pendente");
         }
     }
 
@@ -126,6 +126,11 @@ class sistem
         if (p.Status == Pedido.StatusPedido.Pendente)
         {
             p.Cancelar();
+            Console.WriteLine("Cancelado!");
+        }
+        else
+        {
+            Console.WriteLine("Cancelamento invalido.\nPedido ja foi pago");
         }
     }
 }
