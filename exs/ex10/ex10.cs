@@ -20,13 +20,13 @@ class Pedido
         }
         else
         {
-            throw new ArgumentException("Pedido nao foi criado");
+            Console.WriteLine("Pedido ja existente");
         }
     }
     //verificando numero d pedido
     bool verificarnumero(int n)
     {
-        if (n < 0)
+        if (n <= 0)
         {
             return false;
         }
@@ -39,51 +39,26 @@ class Pedido
     //altera status para pago
     public void Pagar()
     {
-        if (Status == Pedido.StatusPedido.Pendente)
-        {
-            Status = StatusPedido.Pago;
-            Console.WriteLine("Pago com sucesso");
-        }
-        else
-        {
-            Console.WriteLine("Pedido nao esta pendente");
-        }
+        Status=StatusPedido.Pago;
     }
 
     //altera status para enviar
     public void Enviar()
     {
-        if (Status == Pedido.StatusPedido.Pago)
-        {
-            Status=StatusPedido.Enviado;
-            Console.WriteLine("Enviado com sucesso");
-        }
-        else
-        {
-            Console.WriteLine("Nao foi possivel enviar o pedido");
-            return;
-        }
+        Status=StatusPedido.Enviado;
     }
 
     //altera status para cancelado
     public void Cancelar()
     {
-        if (Status == Pedido.StatusPedido.Pendente)
-        {
-            Status=StatusPedido.Cancelado;
-            Console.WriteLine("Cancelado!");
-        }
-        else
-        {
-            Console.WriteLine("Cancelamento invalido.\nPedido ja foi pago");
-        }
+        Status=StatusPedido.Cancelado;
     }
 }
 
 class sistem
 {
     Pedido p;
-    /*void verificar(Pedido p)
+    void verificar(Pedido p)
     {
         if(p.Status == Pedido.StatusPedido.Cancelado)
         {
@@ -95,7 +70,7 @@ class sistem
             Console.WriteLine("Nao e possivel fazer alteracao, pedido ja foi enviado");
             return;
         }
-    }*/
+    }
 
     //Exibir status
     public void ExibirStatus()
@@ -118,25 +93,46 @@ class sistem
     public void Pagar()
     {
         Console.WriteLine("=== Pagar");
-        
-        p.Pagar();
-        
+        if (p.Status == Pedido.StatusPedido.Pendente)
+        {
+            p.Pagar();
+            Console.WriteLine("Pago com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Pedido nao esta pendente");
+        }
     }
 
     //Enviar pedido
     public void Enviar()
     {
         Console.WriteLine("=== Enviar");
-        
-        p.Enviar();
+        if (p.Status == Pedido.StatusPedido.Pago)
+        {
+            p.Enviar();
+            Console.WriteLine("Enviado com sucesso");
+        }
+        else
+        {
+            Console.WriteLine("Nao foi possivel enviar o pedido");
+            return;
+        }
     }
 
     //cancelar pedido
     public void Cancelar()
     {
         Console.WriteLine("=== Cancelar");
-        
-        p.Cancelar();
+        if (p.Status == Pedido.StatusPedido.Pendente)
+        {
+            p.Cancelar();
+            Console.WriteLine("Cancelado!");
+        }
+        else
+        {
+            Console.WriteLine("Cancelamento invalido.\nPedido ja foi pago");
+        }
     }
 }
 class Program
